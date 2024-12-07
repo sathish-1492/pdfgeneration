@@ -7,3 +7,4 @@ client/static
 client/template
 server/ssl
 server/logs
+server/usermedia
