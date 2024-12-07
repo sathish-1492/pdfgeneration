@@ -1,0 +1,537 @@
+/* Dialog and overlay styles */
+.dialog-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff54;
+    z-index: 1000;
+    /* Ensures it is above other content */
+}
+
+.dialog {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+}
+
+
+
+.dialog-content {
+    background: #fff;
+    padding: 0;
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+}
+
+.dialog-header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border-bottom: 1px solid #ddd;
+    border-radius: 12px 12px 0px 0px;
+    position: relative;
+}
+
+.dialog-header h2 {
+    font-size: 18px;
+    margin: 0;
+    font-weight: bold;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+.dialog-header h2::before {
+    content: "👤";
+    /* User icon */
+    font-size: 24px;
+    margin-right: 8px;
+}
+
+.dialog p {
+    text-align: left;
+}
+
+.dialog-header .close {
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 0;
+    margin-left: 8px;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dialog-header .close:hover {
+    background-color: #003d7a;
+    color: #ffffff;
+    /* Even darker on hover */
+}
+
+.dialog .dialog-elements {
+    padding: 20px;
+}
+
+.dialog-content label {
+    text-align: left;
+    font-weight: normal;
+}
+
+.dialog-content input {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.dialog-content select {
+    display: block;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.dialog-footer {
+    position: relative;
+    display: flex;
+    justify-content: end;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    background-color: #f4f4f4;
+    border-radius: 0px 0px 12px 12px;
+}
+
+.dialog-footer button {
+    border: none;
+    padding: 10px 16px;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100px;
+}
+
+.cancel-button {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+}
+
+.confirm-button {
+    background-color: #007bff;
+    color: #fff;
+    border: 1px solid #007bff;
+    margin-left: 10px;
+}
+
+.dialog-footer button:hover {
+    opacity: 0.8;
+}
+
+svg {
+    width: 50px;
+    height: 50px;
+}
+
+[data-selected] {
+    border: 2px solid #b8b8f5 !important;
+    background-color: #e5e5e5 !important;
+    transform: scale(1.1);
+}
+
+/* plan card */
+
+.pricing-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.pricing-header h1 {
+    font-size: 28px;
+}
+
+.pricing-header p {
+    color: #666;
+}
+
+.pricing-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+    margin: 20px 0 20px 0;
+}
+
+
+@media (max-width: 850px) {
+
+    .pricing-container {
+        flex-direction: column;
+    }
+
+    .plan-card {
+        width: 100%;
+    }
+}
+
+.plan-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    background: #fff;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.plan-card:hover {
+    transform: translateY(-5px);
+    border: 1px dotted #4245ff;
+}
+
+input[type="radio"]:checked+.plan-card {
+    border: 1px solid #0004f8;
+    background: #f9feff;
+
+}
+
+.plan-card h2 {
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+}
+
+.plan-card .price {
+    font-size: 32px;
+    color: #4CAF50;
+    margin: 15px 0;
+}
+
+.plan-card button {
+    background: #4CAF50;
+    border: none;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.plan-card button:hover {
+    background: #45a049;
+}
+
+.plan-card ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.plan-card ul li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.plan-text {
+    color: #4caf50;
+    font-size: 0.9em;
+    margin: 0;
+}
+
+.plan-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0 5px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.plan-option:last-child {
+    border-bottom: none;
+}
+
+.form-group h2, h3 {
+    padding: 0;
+    margin-block-start: 0;
+    margin-block-end:0
+}
+
+.payment-info {
+    margin-block-end: 10px;
+    margin-block-start: 5px;
+    padding: 10px;
+    border: 1px solid #d1d1d1;
+    border-radius: 8px;
+    background-color: #fafafa;
+}
+
+.payment-history {
+    margin-bottom: 20px;
+}
+
+.history-title {
+    color: #333;
+    text-align: left;
+}
+
+.form-group ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.form-group li {
+    background: #e9f5fe; /* Light blue background for payment history items */
+    margin: 10px 0; /* Space between items */
+    padding: 10px; /* Padding inside each item */
+    border-radius: 5px; /* Rounded corners */
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space between date and description */
+    align-items: center; /* Center items vertically */
+}
+
+/* Styling for the date in the payment history */
+.date {
+    font-weight: bold; /* Bold font for emphasis */
+    color: #007BFF; /* Blue color for dates */
+    font-size: 16px; /* Font size for dates */
+}
+
+/* Styling for the description */
+.description {
+    color: #555; /* Dark gray color for descriptions */
+    font-size: 14px; /* Font size for descriptions */
+    flex-grow: 1; /* Allow description to take available space */
+    margin-left: 10px; /* Space between date and description */
+}
+
+/* Plan Left Side (Radio and Days) */
+.plan-left {
+    display: flex;
+    align-items: center;
+}
+
+.plan-name {
+    font-size: 16px;
+    margin: 0;
+}
+
+
+.plan-option input[type="radio"] {
+    margin-right: 10px;
+    width: 15px;
+}
+
+.price {
+    color: #0d1216;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.footer {
+    display: flex;
+    margin-top: 20px;
+    flex-direction: column;
+}
+
+.footer .due-date {
+    font-size: 1em;
+    display: flex;
+    justify-content: space-between;
+    color: #bcbcbc;
+    margin-block-end: 10px;
+}
+
+.footer .total {
+    font-size: 1em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer .due {
+    color: #555;
+    font-weight: bold;
+}
+
+.terms {
+    font-size: 0.8em;
+    color: #666;
+    text-align: left;
+    margin-top: 20px;
+}
+
+.terms a {
+    color: #8e44ad;
+    text-decoration: none;
+}
+
+
+@media (max-width: 768px) {
+    .dialog {
+        padding: 0;
+    }
+    
+    .dialog-content {
+        width: 90% !important;
+    }
+}
+/* End of plan card */
+
+
+/*X,Y Lines*/
+
+.draggable {
+    background-color: #add8e6;
+    cursor: grab;
+}
+
+.element:active,
+.draggable:active {
+    cursor: grabbing;
+}
+
+/* Alignment Lines */
+#alignment-guides {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.guide-line {
+    position: absolute;
+    background-color: rgba(255, 0, 0, 0.7);
+    z-index: 1001;
+}
+
+.horizontal {
+    height: 1px;
+    width: 100%;
+}
+
+.vertical {
+    width: 1px;
+    height: 100%;
+}
+
+/* Draggable Container */
+#draggable-container {
+    position: relative;
+    width: 800px;
+    margin: 20px auto 0 auto;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 850px) {
+
+    #canvas,
+    #draggable-container {
+        width: 100%;
+    }
+}
+
+dialog {
+    display: block;
+    border: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dialogForm {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-group .switch{
+    display: block;
+}
+
+.fields {
+    padding: 20px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.dialog-content input {
+    width: 100%;
+    padding: 10px 12px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+    font-size: 14px;
+}
+
+.dialog-content input:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+.dialog-content input.invalid {
+    border-color: #dc3545;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 13px;
+    margin-top: 5px;
+    display: none;
+    text-align: left;
+}
+
+.error-message.active {
+    display: block;
+}
+
+/* End of XY lines */

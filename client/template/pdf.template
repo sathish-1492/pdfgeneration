@@ -1,0 +1,10 @@
+<script id="pdfcontent" type="text/template"><div class="pdf-template">
+Hi {{ data.mnb }},
+
+
+your email id is {{ data.email }}.
+
+
+Address:
+{{ data.address }}
+</div></script>

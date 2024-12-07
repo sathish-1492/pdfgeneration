@@ -1,0 +1,45 @@
+/* PDF css */
+form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    overflow-y: scroll;
+    height: 100%;
+}
+
+form h1 {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input,
+textarea,
+select,
+button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+input:hover,
+textarea:hover,
+select:hover {
+    border: 1px dotted #0000ff
+}
+
+.pdf-format {
+    width: 50%;
+}
+
+.pdf-template {
+    white-space: break-spaces;
+    padding: 20px 0;
+}

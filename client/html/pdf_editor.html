@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>PDF Generator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/icon/favicon.webp" sizes="16x16" type="image/x-icon">
+    <script src="/static/js/library.pdf.min.js"></script>
+    <script defer src="/static/js/pdf.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/pdf.min.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FN869X9L14"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-FN869X9L14');
+    </script>
+</head>
+
+<body>
+    <header class="top-bar">
+        <div class="left-section ht38">
+            <a class="hidden" href="/">
+                <svg width="150" height="50" viewBox="0 0 250 50" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="250" height="50" rx="10" ry="10" fill="#FF0000" />
+                    <polygon points="25,15 25,35 40,25" fill="white" />
+                    <text x="50" y="32" font-family="Arial, sans-serif" font-size="20" fill="white">YouTube
+                        Thumbnail</text>
+                </svg>
+            </a>
+            <a class="product-link" href="/">
+                <span class="product-name">PGF Generator</span>
+            </a>
+        </div>
+        <div data-right-top-bar class="right-section">
+            <button id="google_siginin" class="google-signin" style="display: none;">Sign in with Google</button>
+
+            <a href="/pdf" class="product-link">PDF</a>
+
+        </div>
+    </header>
+</body>
+
+<main class="content">
+    
+    <div class="flex-row">
+        <div class="right-content">
+            <div class="textcontainer">
+                <textarea id="template_content"></textarea>
+            </div>
+            <div class="save-button">
+                <button id="save_template">Save</button>
+            </div>
+        </div>
+        <div class="content-plus">+</div>
+        <div class="left-content">
+            <form id="pdfform">
+                Form placeholders...
+            </form>
+        </div>
+    </div>
+</main>
+
+
+<div id="mask" class="mask">
+    <!-- <div class="progress-container">
+        <div class="progress-bar" id="download_bar"></div>
+    </div>
+    <span class="progress-per" id="download_per">0%</span> -->
+</div>
+
+</html>

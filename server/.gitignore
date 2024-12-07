@@ -1,0 +1,10 @@
+.DS_Store
+.env
+package.json
+package-lock.json
+node_modules
+client/static
+client/template
+server/ssl
+server/logs
+server/usermedia

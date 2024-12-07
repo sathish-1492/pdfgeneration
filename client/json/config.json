@@ -1,0 +1,42 @@
+{
+    "app_developer": "Sathish Krishnamoorthy",
+    "app_name": "Video and Thumbnail Maker",
+    "app_email": "thumbnailbuilder24@gmail.com",
+    "developer_email": [],
+    "version": "16",
+    "storage": {
+        "location": "server",
+        "local_storage_key": "editor_meta"
+    },
+    "api": {
+    },
+    "editor": {
+    },
+    "plans": {
+        "free": {
+            "label": "0 Day",
+            "days": 0,
+            "price": 0
+        },
+        "1d": {
+            "label": "1 Day",
+            "days": 1,
+            "price": 49
+        },
+        "7d": {
+            "label": "1 Week",
+            "days": 7,
+            "price": 149
+        },
+        "30d": {
+            "label": "1 Month",
+            "days": 30,
+            "price": 349
+        },
+        "365d": {
+            "label": "12 Months",
+            "days": 365,
+            "price": 999
+        }
+    }
+}

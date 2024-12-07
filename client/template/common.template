@@ -1,0 +1,237 @@
+<script id="dialogTemplate" type="text/template">
+
+    <div id="dialogFields" class="dialog-content" style="width:{{ form.width }}vw;height:{{ form.height }}vh;">
+        <form class="dialogForm" id="dialogForm">
+            <div class="dialog-header">
+                <h2 id="dialogTitle">{{ form.title }}</h2>
+                <span data-close class="close">&times;</span>
+            </div>
+            <div class="fields" id="dialogFields">
+                {% for field of form.fields %}
+                    <div class="form-group">
+                        {% if field.type == "text" %}
+                        
+                            {% include "dialogText" %}
+                        
+                        {% elif field.type == "select" %}
+                        
+                            {% include "dialogSelect" %}
+
+                        {% elif field.type == "radio" %}
+                        
+                            {% include "dialogRadio" %}
+
+                        {% elif field.type == "toggle" %}
+                        
+                            {% include "dialogToggle" %}
+
+                        {% elif field.type == "subscribe" %}
+                        
+                            {% include "dialogSubscribe" %}
+                        
+                        {% elif field.type == "textarea" %}
+                        
+                            {% include "dialogTextarea" %}
+
+                        {% elif field.type == "beta" %}
+                        
+                            {% include "dialogBeta" %}
+                
+                        {% endif %}
+                    
+                    </div>
+                {% endfor %}
+            </div>
+
+            {% if form.footer %}
+                <div class="dialog-footer">
+                    <button type="button" class="cancel-button" id="cancelButton" class="cancel">{{ form.cancel_text}}</button>
+
+                    {% if !form.disable_submit %}
+                        <button type="submit" class="confirm-button" id="saveButton">{{ form.submit_text }}</button>
+                    {% endif %}
+                </div>
+            {% endif %}
+            
+        </form>
+
+    </div>
+</script>
+
+
+<script id="dialogText" type="text/template" internal="true">
+
+    <label for="{% if field.id %}{{ field.id }}{% else %}{{ field.label }} {% endif %}">{{ field.label }}</label>
+    <input type="text" name="{% if field.id %}{{ field.id }}{% else %}{{ field.label }} {% endif %}" value="{{ field.value }}" 
+        {% if field.validate %}
+            data-validate="{{ field.validate }}"
+        {% endif %}
+    >
+    <div class="loading-spinner"></div>
+    <span class="error-message"></span>
+
+</script>
+
+<script id="dialogSelect" type="text/template" internal="true">
+
+    <label for="{% if field.id %}{{ field.id }}{% else %}{{ field.label }} {% endif %}">{{ field.label }}</label>
+    <select name="{% if field.id %}{{ field.id }}{% else %}{{ field.label }} {% endif %}">
+        {% for option in field.values %}
+            <option value="{{ option }}">{{ option }}</option>
+        {% endfor %}
+    </select>
+    <span class="error-message"></span>
+</script>
+
+<script id="dialogRadio" type="text/template" internal="true">
+
+    <div class="pricing-container" >
+
+        {% for item of field.items %}
+
+            <label for="{{ item.name }}" class="radio-group">
+
+                <input type="radio" id="{{ item.name }}" name="{{ field.name }}" value="{{ item.name }}"
+                    {% if item.name == field.value %}
+                        checked ="true"
+                    {% endif %}
+                    style="display:none;">
+                <div class="plan-card">
+                    <h2>{{ item.name | upper }}</h2>
+                    <p class="price">${{ item.price }}</p>
+                    <ul>
+                        {% for featureName, count in item.features %}
+                                <li> {{ featureName }}: {{ count }} </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </label>
+    
+        {% endfor %}
+
+    </div>
+
+</script>
+
+<script id="dialogSubscribe1" type="text/template" internal="true">
+
+    <div class="pricing-container radio-group">
+
+        {% for item of field.items %}
+
+            <label for="{{ item.plan_name }}">
+
+                <input type="radio" id="{{ item.plan_name }}" name="{{ field.name }}" value="{{ item.plan_name }}"
+                    {% if item.name == field.value %}
+                        checked ="true"
+                    {% endif %}
+                    style="display:none;">
+                <div class="plan-card">
+                    <h2>{{ item.name | upper }}</h2>
+                    <p class="price">₹{{ item.price }}</p>
+                    <ul>
+                        {% for featureName, count in item.features %}
+                                <li> {{ featureName }}: {{ count }} </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </label>
+    
+        {% endfor %}
+
+    </div>
+
+</script>
+
+<script id="dialogSubscribe" type="text/template" internal="true">
+
+
+    {% if field.payment_history | length > 0 %}
+        <!-- <h2>Payment Details</h2>
+        <div class="payment-info">
+            <span>Next Payment Date: </span>
+            <span>{{ field.next_payment_date | date:"d M Y" }}</span>
+        </div> -->
+        <div class="payment-history">
+            <h3 class="history-title">Payment History</h3>
+            <ul>
+                {% for record of field.payment_history %}
+                    <li>
+                        <span class="date">{{ record.payment_date | date:"d M Y" }}</span>
+                        <span class="description">Paid for {{ record.features.label }} plan</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+    {% endif %}
+
+    <p class="plan-text">✔ No auto-renewal. Top-up anytime</p>
+    <div class="radio-group">
+
+        {% for item of field.items %}
+            <div class="plan-option">
+                <div class="plan-left">
+                    <input type="radio"id="{{ item.plan_name }}" name="{{ field.name }}" value="{{ item.plan_name }}" 
+                        data-days="{{ item.days }}"
+                        data-price="₹{{ item.price }}" 
+                        {% if item.plan_name == field.value %}
+                            checked ="true"
+                        {% endif %}
+                        data-event="change MyDialog.changePrice"
+                    > 
+                    <label for="{{ item.plan_name }}" class="plan-name">{{ item.name }}</label>
+                </div>
+                <span class="price">₹{{ item.price }}</span>
+            </div>
+    
+        {% endfor %}
+
+    </div>
+
+    <div class="footer">
+        <div class="due-date">
+            <span>Ends on</span>
+            <span data-due-date>{{ field.due_date }}</span>
+        </div>
+        <div class="total">
+            <span>Due</span>
+            <span class="due" data-due-price>₹{{ field.price }}</span>
+        </div>
+    </div>
+
+    <div class="terms">
+        By continuing, you agree to the <a href="/policy/terms">Terms of Use</a> and confirm you have read our <a href="/policy/privacy">Privacy Policy</a>.
+    </div>
+
+</script>
+
+
+<script id="dialogTextarea" type="text/template" internal="true">
+
+    <!-- <label for="{{ field.label }}">{{ field.label }}</label> -->
+<textarea name="{% if field.id %}{{ field.id }}{% else %}{{ field.label }} {% endif %}" rows="5" cols="40" {% if field.validate %} data-validate="{{ field.validate }}" {%
+    endif %}>
+        {{ field.value }}
+    </textarea>
+<span class="error-message"></span>
+
+</script>
+
+<script id="dialogBeta" type="text/template" internal="true">
+
+    <h2>Beta Account</h2>
+    <p>Contact admin.</p>
+</script>
+
+
+<script id="dialogToggle" type="text/template" internal="true">
+
+    <label for="{% if field.id %}{{ field.id }}{% else %}{{ field.label }} {% endif %}">{{ field.label }}</label>
+
+    <label class="switch checkbox-group">
+        <input type="checkbox" value='true' name="{% if field.id %}{{ field.id }}{% else %}{{ field.label }} {% endif %}" {% if field.checked %} checked{% endif %}>
+        <span class="slider"></span>
+    </label>
+
+</script>
