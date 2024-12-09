@@ -1,6 +1,8 @@
 # pdf generation
-I want to create a generate PDF, docs of the given form data
+Generate a PDF, and docx files to given form data.
+
+### compile files
+cd server; node script/templateCompiler.js 
 
 ## start a server
-cd server;
 node server.js
